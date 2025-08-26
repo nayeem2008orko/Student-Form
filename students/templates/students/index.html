@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Students Form</title>
+        <link rel="stylesheet" href="{% static 'students/styles.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <img src="{% static 'students/Graphics/British.png' %}" alt="School Logo" width="150" height="100">
+        <h1>British Imperial College</h1>
+        <h2>Student form</h2>
+        
+<form method="POST">
+    {% csrf_token %}
+    <fieldset id="pi">
+        <legend>Personal Information</legend>
+        <label for="full_name">Full name</label>
+        <input type="text" name="full_name" placeholder="Enter your full name" required> <br>
+        
+        <label for="date_of_birth">Date of birth</label>
+        <input type="date" name="date_of_birth" required>
+    </fieldset>
+
+    <fieldset id="acc">
+        <legend>Academics</legend>
+        <label for="subject">Subject</label>
+        <input name="subject" type="text" placeholder="Enter your Subject" required> <br>
+
+        <label for="enrollment_year">Enrolled Year</label>
+        <select name="enrollment_year">
+            <option selected>Select your enrollment year</option>
+            <option value="Jan-2026">Jan 2026</option>
+            <option value="June-2026">June 2026</option>
+            <option value="September-2026">September 2026</option>
+            <option value="October-2026">October 2026</option>
+        </select> <br>
+
+        <label for="highschool_cgpa">High School CGPA</label>
+        <input name="highschool_cgpa" type="number" step="0.1" min="2.0" max="5.0" placeholder="Enter your CGPA">
+    </fieldset>
+
+    <fieldset id="eca">
+        <legend>Extracurricular Activities</legend>
+        <p>Are you interested in Extracurricular Activities?</p>
+        <label for="eca_interest">Yes</label>
+        <input type="radio" name="eca_interest" value="Yes">
+        <label for="eca_interest">No</label>
+        <input type="radio" name="eca_interest" value="No"> <br>
+
+        If yes
+        <select name="eca_choice">
+            <option selected>Select your desired ECA </option>
+            <option value="IT-Robotics">IT & Robotics</option>
+            <option value="Debate">Debating</option>
+            <option value="social-work">Social work</option>
+            <option value="drama">Drama</option>
+        </select>
+    </fieldset>
+
+    <p id="label">Why did you consider our college:</p>
+    <textarea cols="30" rows="13" name="reason"></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+        
+    </body>
+</html>
